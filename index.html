@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1131px;
+            height: 788px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Pia2018_1.js"></script>
+        <script src="data/Pia2000_2.js"></script>
+        <script src="data/PerdidayGanancia20002015_3.js"></script>
+        <script src="data/Contorno_4.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:20, minZoom:1
+        }).fitBounds([[7.746692119993674,-87.62424197909246],[12.100953489397448,-81.29507109740173]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var layer_GoogleMaps_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 20,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_GoogleMaps_0;
+        map.addLayer(layer_GoogleMaps_0);
+        function pop_Pia2018_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? Autolinker.link(feature.properties['fid'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? Autolinker.link(feature.properties['OBJECTID'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Clase'] !== null ? Autolinker.link(feature.properties['Clase'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Area_ha'] !== null ? Autolinker.link(feature.properties['Area_ha'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Region'] !== null ? Autolinker.link(feature.properties['Region'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Año'] !== null ? Autolinker.link(feature.properties['Año'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Pia2018_1_0() {
+            return {
+                pane: 'pane_Pia2018_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,174,37,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Pia2018_1');
+        map.getPane('pane_Pia2018_1').style.zIndex = 401;
+        map.getPane('pane_Pia2018_1').style['mix-blend-mode'] = 'normal';
+        var layer_Pia2018_1 = new L.geoJson(json_Pia2018_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Pia2018_1',
+            layerName: 'layer_Pia2018_1',
+            pane: 'pane_Pia2018_1',
+            onEachFeature: pop_Pia2018_1,
+            style: style_Pia2018_1_0,
+        });
+        bounds_group.addLayer(layer_Pia2018_1);
+        map.addLayer(layer_Pia2018_1);
+        function pop_Pia2000_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? Autolinker.link(feature.properties['fid'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Región'] !== null ? Autolinker.link(feature.properties['Región'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Año'] !== null ? Autolinker.link(feature.properties['Año'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Area'] !== null ? Autolinker.link(feature.properties['Area'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Clase'] !== null ? Autolinker.link(feature.properties['Clase'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Pia2000_2_0() {
+            return {
+                pane: 'pane_Pia2000_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(154,255,1,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Pia2000_2');
+        map.getPane('pane_Pia2000_2').style.zIndex = 402;
+        map.getPane('pane_Pia2000_2').style['mix-blend-mode'] = 'normal';
+        var layer_Pia2000_2 = new L.geoJson(json_Pia2000_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Pia2000_2',
+            layerName: 'layer_Pia2000_2',
+            pane: 'pane_Pia2000_2',
+            onEachFeature: pop_Pia2000_2,
+            style: style_Pia2000_2_0,
+        });
+        bounds_group.addLayer(layer_Pia2000_2);
+        map.addLayer(layer_Pia2000_2);
+        function pop_PerdidayGanancia20002015_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? Autolinker.link(feature.properties['fid'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Area_ha'] !== null ? Autolinker.link(feature.properties['Area_ha'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Codigo'] !== null ? Autolinker.link(feature.properties['Codigo'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cambio'] !== null ? Autolinker.link(feature.properties['Cambio'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cober2000'] !== null ? Autolinker.link(feature.properties['Cober2000'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cober2015'] !== null ? Autolinker.link(feature.properties['Cober2015'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PerdidayGanancia20002015_3_0(feature) {
+            switch(String(feature.properties['Cober2000'])) {
+                case 'Cobertura Forestal':
+                    return {
+                pane: 'pane_PerdidayGanancia20002015_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(87,189,4,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Humedal':
+                    return {
+                pane: 'pane_PerdidayGanancia20002015_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(71,64,202,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'No piña':
+                    return {
+                pane: 'pane_PerdidayGanancia20002015_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(27,37,23,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Piña':
+                    return {
+                pane: 'pane_PerdidayGanancia20002015_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,247,1,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_PerdidayGanancia20002015_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(116,234,219,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_PerdidayGanancia20002015_3');
+        map.getPane('pane_PerdidayGanancia20002015_3').style.zIndex = 403;
+        map.getPane('pane_PerdidayGanancia20002015_3').style['mix-blend-mode'] = 'normal';
+        var layer_PerdidayGanancia20002015_3 = new L.geoJson(json_PerdidayGanancia20002015_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_PerdidayGanancia20002015_3',
+            layerName: 'layer_PerdidayGanancia20002015_3',
+            pane: 'pane_PerdidayGanancia20002015_3',
+            onEachFeature: pop_PerdidayGanancia20002015_3,
+            style: style_PerdidayGanancia20002015_3_0,
+        });
+        bounds_group.addLayer(layer_PerdidayGanancia20002015_3);
+        map.addLayer(layer_PerdidayGanancia20002015_3);
+        function pop_Contorno_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? Autolinker.link(feature.properties['fid'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['objectid'] !== null ? Autolinker.link(feature.properties['objectid'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['shape_leng'] !== null ? Autolinker.link(feature.properties['shape_leng'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['shape_area'] !== null ? Autolinker.link(feature.properties['shape_area'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Contorno_4_0() {
+            return {
+                pane: 'pane_Contorno_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,180,60,0.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Contorno_4');
+        map.getPane('pane_Contorno_4').style.zIndex = 404;
+        map.getPane('pane_Contorno_4').style['mix-blend-mode'] = 'normal';
+        var layer_Contorno_4 = new L.geoJson(json_Contorno_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Contorno_4',
+            layerName: 'layer_Contorno_4',
+            pane: 'pane_Contorno_4',
+            onEachFeature: pop_Contorno_4,
+            style: style_Contorno_4_0,
+        });
+        bounds_group.addLayer(layer_Contorno_4);
+        map.addLayer(layer_Contorno_4);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/Contorno_4.png" /> Contorno': layer_Contorno_4,'PerdidayGanancia2000-2015<br /><table><tr><td style="text-align: center;"><img src="legend/PerdidayGanancia20002015_3_CoberturaForestal0.png" /></td><td>Cobertura Forestal</td></tr><tr><td style="text-align: center;"><img src="legend/PerdidayGanancia20002015_3_Humedal1.png" /></td><td>Humedal</td></tr><tr><td style="text-align: center;"><img src="legend/PerdidayGanancia20002015_3_Nopiña2.png" /></td><td>No piña</td></tr><tr><td style="text-align: center;"><img src="legend/PerdidayGanancia20002015_3_Piña3.png" /></td><td>Piña</td></tr><tr><td style="text-align: center;"><img src="legend/PerdidayGanancia20002015_3_4.png" /></td><td></td></tr></table>': layer_PerdidayGanancia20002015_3,'<img src="legend/Pia2000_2.png" /> Piña2000': layer_Pia2000_2,'<img src="legend/Pia2018_1.png" /> Piña2018': layer_Pia2018_1,"Google Maps": layer_GoogleMaps_0,}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
